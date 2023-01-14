@@ -2,6 +2,8 @@ const express = require("express");
 const app = express()
 const port = 3000
 
+//Ajout d'un fichier static comme Css/javascrip ou des images
+app.use(express.static('public'))
 //utilisation middlewares avec use
 app.use('/', (req, res, next) =>{  
     //exemple d'un middlwares
