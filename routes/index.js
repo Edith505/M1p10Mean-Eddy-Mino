@@ -7,7 +7,8 @@ router.get('/', function(req, res, next) {
  //res.render('index', { title: 'Express' });
   Vehicule.find()
   .then((vehicules)=>{
-    res.status(200).json(vehicules);
+    res.render('index', { title: 'Express', 'vehicules': vehicules})
+    //res.status(200).json(vehicules);
   })
   .catch((err)=>{
     res.status(200).json(err)

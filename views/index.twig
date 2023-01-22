@@ -1,6 +1,36 @@
 {% extends 'layout.twig' %}
 
 {% block body %}
-  <h1>{{title}}</h1>
-  <p>Welcome to {{title}}</p>
+  <table class="table">
+  <thead class="table-success">
+    <tr>
+      <th scope="col">Proprietaire</th>
+      <th scope="col">Image</th>
+      <th scope="col">Model</th>
+      <th scope="col">Type</th>
+      <th scope="col">Année</th>
+      <th scope="col" class="descr">Description</th>
+      <th scope="col">Date de dépôt</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  {% if vehicules %}
+  <tbody>
+    {% for vehicule in vehicules %}
+    <tr>
+      <td>{{vehicule.Proprietaire}}</td>
+      <td><img src="https://via.placeholder.com/150" alt="{{vehicule.model}}"></td>
+      <td>{{vehicule.model}}</td>
+      <td>{{vehicule.type}}</td>
+      <td>{{vehicule.anne}}</td>
+      <td>{{vehicule.description}}</td>
+      <td>{{vehicule.depot}}</td>
+      <td class="action-tabs"><a href="" class="btn btn-info">Voir</a>
+        <button type="button" class="btn btn-danger">Delet</button>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+  {% endif %}
+  </table>
 {% endblock %}
