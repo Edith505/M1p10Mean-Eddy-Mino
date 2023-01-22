@@ -12,3 +12,16 @@ body {
   height: auto;
 }
 
+.depot{
+  width: 20rem;
+  height: auto;
+}
+.navbar{
+  margin-bottom: 25px;
+  padding: 15px;
+}
+
+.container-fluid{
+  margin: 0;
+  padding: 0;
+}
