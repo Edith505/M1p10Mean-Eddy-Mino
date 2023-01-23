@@ -18,6 +18,11 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Home' })
 });
 
+router.get('/homeDashboard', function(req, res, next) {
+  res.render('homeDashboard', { title: 'Admin' })
+});
+
+
 router.get('/SingIn', function(req, res, next) {
   res.render('SingIn', { title: 'SingIn' })
 });

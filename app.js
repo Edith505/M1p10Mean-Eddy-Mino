@@ -4,9 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const mongoose = require('mongoose')
-const Model = require('./models/model')
 const bodyParser = require('body-parser')
-const Vehicule = require('./models/vehiculModel')
 
 //connexion a mongoose
 mongoose.set("strictQuery", false);
