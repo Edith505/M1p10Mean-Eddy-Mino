@@ -2,11 +2,9 @@ const Vehicule = require('../models/vehiculModel')
 const Model = require('../models/model');
 
 exports.liste = (req,res)=>{
-      //res.render('index', { title: 'Express' });
        Vehicule.find()
       .then((vehicules)=>{
-            res.render('index', { title: 'Home', 'vehicules': vehicules})
-    //res.status(200).json(vehicules);
+            res.render('listeVehicule', { title: 'listeVehicule', 'vehicules': vehicules})
       })
       .catch((err)=>{
             res.status(200).json(err)
@@ -40,7 +38,7 @@ exports.addOn = (req, res)=>{
      })
      vehicule.save()
      .then(()=>{
-      res.render('addVehicule', {succes:"Votre Vehicule a été bien enregistrer"})
+      res.render('addVehicule', {success:"Votre Vehicule a été bien enregistrer"})
      })
      .catch(()=>{
       res.render('addVehicule', {error:"Echoue de l'ajout d'un voiture"})

@@ -1,0 +1,37 @@
+    {% extends 'dashboard.twig' %}
+
+    {% block body %}
+        <h3 class="fs-4 mb-3 mt-3">LISTE DES VEHICULES</h3>
+            <div class="col">
+                <table class="table bg-white rounded shadow-sm  table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Proprietaire</th>
+                            <th scope="col">Model</th>
+                            <th scope="col">Année</th>
+                            <th scope="col" class="descr">Description</th>
+                            <th scope="col">Date de dépôt</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    {% if vehicules %}
+                        <tbody>
+                            {% for vehicule in vehicules %}
+                                <tr>
+                                    <td>{{vehicule.Proprietaire}}</td>
+                                    <td>{{vehicule.model}}</td>
+                                    <td>{{vehicule.anne}}</td>
+                                    <td>{{vehicule.description}}</td>
+                                    <td>{{vehicule.depot | date("d/m/Y g:i:sA")}}</td>
+                                    <td class="action-tabs"><a href="/vehicule/{{vehicule._id}}" class="btn btn-voir">Voir</a>
+                                        <button type="button" class="btn btn-secondary">Supprimer</button>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    {% endif %}
+                </table>
+            </div>
+
+    {% endblock %}
+

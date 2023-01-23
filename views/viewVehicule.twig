@@ -1,21 +1,23 @@
-{% extends 'layout.twig' %}
+{% extends 'dashboard.twig' %}
 {% block body %}
-      <div class="container">
-            <div class="card border-success mb-3" style="max-width: 100rem;">
+      <div class="container mt-5">
+            <div class="card mb-3" style="max-width: 100rem;">
                   <div class="row no-gutters">
                         <div class="col-md-4">
                               <img src="https://via.placeholder.com/150" class="card-img-top" alt="{{vehiule.Proprietaire}}">
                         </div>
                         <div class="col-md-8 text-black">
                               <div class="card-body">
-                                    <h5 class="card-header mb-4">Model Vehicule : {{vehicule.model}}</h5>
-                                    <p class="card-text">Proprietaire : {{vehicule.Proprietaire}}</p>
-                                    <p class="card-text">Année vehicule : {{vehicule.anne}}</p>
-                                    <p class="card-text">Description : {{vehicule.description}}</p>
-                                    <p class="card-text"><small class="text-muted">Date de dépôt : {{vehicule.depot | date("d/m/Y")}}</small></p>
+                                    <h5 class="card-header mb-4"><strong>Model Vehicule : </strong>{{vehicule.model}}</h5>
+                                    <p class="card-text"><strong>Proprietaire : </strong>{{vehicule.Proprietaire}}</p>
+                                    <p class="card-text"><strong>Année vehicule : </strong>{{vehicule.anne}}</p>
+                                    <p class="card-text"><strong>Date de dépôt : </strong><small class="text-muted">{{vehicule.depot | date("d/m/Y g:i:sA")}}</small></p>
+                                    <p class="card-text"><strong>Description : <br><br></strong>{{vehicule.description}}</p>
                               </div>
                         </div>
                   </div>
+                  
             </div>
+            <a href="/listeVehicule" class="btn btn-retour"> < Retour </a>
       </div>
 {% endblock %}

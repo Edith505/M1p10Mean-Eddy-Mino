@@ -1,6 +1,9 @@
 {% extends 'layout.twig' %}
 
 {% block body %}
+
+{% endblock %}
+<!--
   <h1 class="text-center text-success">Liste des vehicules</h1>
   <table class="table">
   <thead class="bg-info">
@@ -21,7 +24,7 @@
       <td>{{vehicule.model}}</td>
       <td>{{vehicule.anne}}</td>
       <td>{{vehicule.description}}</td>
-      <td>{{vehicule.depot}}</td>
+      <td>{{vehicule.depot | date("d/m/Y g:i:sA")}}</td>
       <td class="action-tabs"><a href="/vehicule/{{vehicule._id}}" class="btn btn-info">Voir</a>
         <button type="button" class="btn btn-danger">Supprimer</button>
       </td>
@@ -30,4 +33,4 @@
   </tbody>
   {% endif %}
   </table>
-{% endblock %}
+-->

@@ -14,37 +14,6 @@ mongoose.connect('mongodb://127.0.0.1:27017/AuthentificationDb', {UseNewUrlParse
 .then(()=>console.log("ConnectedSuccessful"))
 .catch(()=>console.log("Error in the Connection"));
 
-
-for (let index = 0; index < 10; index++) {
- //creez un vehicule
-var vehicule = new Vehicule({
-  Proprietaire: "Monsieur" + index,
-  image:"http://localhost:3000/public/images/vehicule.jpg",
-  model:"Vl" ,
-  type: "VG",
-  anne: 2000 + index,
-  description: "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book." + index,
-  depot: Date.now()
-})
-//sauvegarder un vehicule
-//vehicule.save()
-//.then(()=>console.log("sauvegarde reussi"))
-//.catch(()=>console.log("sauvegarde echoue"));
- 
-}
-for (let index = 0; index < 5; index++) {
-  //creez un type
- var model = new Model({
-    option:'Model '+index
- })
- //sauvegarder un type
-//model.save()
- //.then(()=>console.log("sauvegarde reussi"))
- //.catch(()=>console.log("sauvegarde echoue"));
-   
- }
-
-
 //Importation des router
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');

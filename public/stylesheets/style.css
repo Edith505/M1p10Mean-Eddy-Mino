@@ -6,9 +6,119 @@
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
+:root {
+  --main-bg-color: #8DA1B9;
+  --main-text-color: #8DA1B9;
+  --second-text-color: #8DA1B9;
+  --second-bg-color: #212528;
+}
 
+.primary-text {
+  color: var(--main-text-color);
+}
+
+.list-group-flush a:hover{
+  color: #ff778a;
+}
+
+.second-text {
+  color: var(--second-text-color);
+}
+
+
+
+.primary-bg {
+  background-color: var(--main-bg-color);
+}
+
+.secondary-bg {
+  background-color: var(--second-bg-color);
+}
+
+.rounded-full {
+  border-radius: 100%;
+}
+
+#wrapper {
+  overflow-x: hidden;
+  background-image: #383961;
+}
+
+#sidebar-wrapper {
+  min-height: 100vh;
+  margin-left: -15rem;
+  -webkit-transition: margin 0.25s ease-out;
+  -moz-transition: margin 0.25s ease-out;
+  -o-transition: margin 0.25s ease-out;
+  transition: margin 0.25s ease-out;
+}
+
+#sidebar-wrapper .sidebar-heading {
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
+  color: #8DA1B9;
+}
+
+#sidebar-wrapper .list-group {
+  width: 15rem;
+}
+
+#page-content-wrapper {
+  min-width: 100vw;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+  margin-left: 0;
+}
+
+#menu-toggle {
+  cursor: pointer;
+}
+
+.list-group-item {
+  border: none;
+  padding: 20px 30px;
+}
+#sidebar-wrapper{
+  background-color: #000500;
+}
+.fa-user-secret{
+  color: #FF778A;
+}
+
+.list-group-item.active {
+  background-color: transparent;
+  color: var(--main-text-color);
+  font-weight: bold;
+  border: none;
+}
+
+@media (min-width: 768px) {
+  #sidebar-wrapper {
+    margin-left: 0;
+  }
+
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: -15rem;
+  }
+}
+
+.btn-retour:hover{
+  background-color: #000500;
+  color: white;
+}
+
+.btn-retour{
+  background-color: #383961;
+  color: white;
+}
 .descr{
-  width: 25%;
+  width: 40%;
   height: auto;
 }
 
@@ -26,8 +136,20 @@ body {
   padding: 0;
 }
 
-.container{
-  border: 1px solid black;
-  padding: 50px;
-  border-radius: 8px;
+.btn-voir{
+  background-color: #383961;
+  color: white;
+}
+
+.btn-voir:hover{
+  background-color: #ff778a;
+  color: white;
+}
+.btn-secondary:hover{
+  background-color: #ff778a;
+  border-color: #ff778a;
+}
+
+.orange{
+  color: #FF778A;
 }
