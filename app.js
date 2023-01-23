@@ -6,15 +6,16 @@ var logger = require('morgan');
 const mongoose = require('mongoose')
 const Model = require('./models/model')
 const bodyParser = require('body-parser')
-//const Vehicule = require('./models/vehiculModel')
+const Vehicule = require('./models/vehiculModel')
 
 //connexion a mongoose
+mongoose.set("strictQuery", false);
 mongoose.connect('mongodb://127.0.0.1:27017/AuthentificationDb', {UseNewUrlParser: true, UseUnifiedTopology: true})
 .then(()=>console.log("ConnectedSuccessful"))
 .catch(()=>console.log("Error in the Connection"));
 
 
-/**for (let index = 0; index < 10; index++) {
+for (let index = 0; index < 10; index++) {
  //creez un vehicule
 var vehicule = new Vehicule({
   Proprietaire: "Monsieur" + index,
@@ -26,9 +27,9 @@ var vehicule = new Vehicule({
   depot: Date.now()
 })
 //sauvegarder un vehicule
-vehicule.save()
-.then(()=>console.log("sauvegarde reussi"))
-.catch(()=>console.log("sauvegarde echoue"));
+//vehicule.save()
+//.then(()=>console.log("sauvegarde reussi"))
+//.catch(()=>console.log("sauvegarde echoue"));
  
 }
 for (let index = 0; index < 5; index++) {
@@ -38,10 +39,10 @@ for (let index = 0; index < 5; index++) {
  })
  //sauvegarder un type
 //model.save()
- .then(()=>console.log("sauvegarde reussi"))
- .catch(()=>console.log("sauvegarde echoue"));
+ //.then(()=>console.log("sauvegarde reussi"))
+ //.catch(()=>console.log("sauvegarde echoue"));
    
- }*/ 
+ }
 
 
 //Importation des router

@@ -7,7 +7,6 @@
     <tr>
       <th scope="col">Proprietaire</th>
       <th scope="col">Model</th>
-      <th scope="col">Type</th>
       <th scope="col">Année</th>
       <th scope="col" class="descr">Description</th>
       <th scope="col"  class="depot">Date de dépôt</th>
@@ -20,12 +19,11 @@
     <tr>
       <td>{{vehicule.Proprietaire}}</td>
       <td>{{vehicule.model}}</td>
-      <td>{{vehicule.type}}</td>
       <td>{{vehicule.anne}}</td>
       <td>{{vehicule.description}}</td>
       <td>{{vehicule.depot}}</td>
       <td class="action-tabs"><a href="/vehicule/{{vehicule._id}}" class="btn btn-info">Voir</a>
-        <button type="button" class="btn btn-danger">Delet</button>
+        <button type="button" class="btn btn-danger">Supprimer</button>
       </td>
     </tr>
     {% endfor %}
