@@ -34,13 +34,27 @@ exports.add = (req, res)=>{
 exports.addOn = (req, res)=>{
      var vehicule = new Vehicule({
             ...req.body,
+            image:req.file.filename,
             depot: Date.now()
      })
-     vehicule.save()
-     .then(()=>{
-      res.render('addVehicule', {success:"Votre Vehicule a été bien enregistrer"})
-     })
-     .catch(()=>{
-      res.render('addVehicule', {error:"Echoue de l'ajout d'un voiture"})
+     vehicule.save((err, vehicule)=>{
+      if (err) {
+            Model.find()
+            .then((models)=>{
+                  res.render('addVehicule', {models :models, error:"Envoie echouée, veuillez verifier les champs"})
+            })
+            .catch(()=>{
+                  res.redirect('/')
+            }); 
+      }
+      else{
+            Model.find()
+            .then((models)=>{
+                  res.render('addVehicule', {models :models, success:"Votre Vehicule a été bien enregistrer"}) 
+            })
+            .catch(()=>{
+                  res.redirect('/')
+            });   
+      }
      })
 }

@@ -1,10 +1,12 @@
 var express = require('express');
-const vehiculeController = require('../controllers/vehiculeController')
+const multer = require('multer');
+const vehiculeController = require('../controllers/vehiculeController');
+const multerConfig = require('../middlewares/multerConfig');
 var router = express.Router();
 
 
 /* POST page. */
-router.post('/addVehicule', vehiculeController.addOn);
+router.post('/addVehicule',multerConfig, vehiculeController.addOn);
 
 
 /* GET page. */
