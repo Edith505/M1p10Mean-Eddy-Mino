@@ -5,8 +5,7 @@ const vehiculeShema = new Schema({
       Proprietaire:String,
       image : String,
       model: String,
-      type: String,
-      anne: Number,
+      anne:Number,                                                  
       description: String,
       depot:{
             type:Date,

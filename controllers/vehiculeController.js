@@ -1,5 +1,5 @@
-//const Vehicule = require('../models/vehiculModel')
 const Vehicule = require('../models/vehiculModel')
+const Model = require('../models/model');
 
 exports.liste = (req,res)=>{
       //res.render('index', { title: 'Express' });
@@ -21,4 +21,28 @@ exports.show = (req,res) =>{
       .catch((err)=>{
         res.redirect('/')
       });
+}
+
+exports.add = (req, res)=>{
+      Model.find()
+      .then((models)=>{
+            res.render('addVehicule', {models: models})
+          })
+          .catch((err)=>{
+            res.redirect('/');
+          });
+}
+
+exports.addOn = (req, res)=>{
+     var vehicule = new Vehicule({
+            ...req.body,
+            depot: Date.now()
+     })
+     vehicule.save()
+     .then(()=>{
+      res.render('addVehicule', {succes:"Votre Vehicule a été bien enregistrer"})
+     })
+     .catch(()=>{
+      res.render('addVehicule', {error:"Echoue de l'ajout d'un voiture"})
+     })
 }

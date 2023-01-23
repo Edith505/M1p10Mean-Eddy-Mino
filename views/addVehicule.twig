@@ -1,0 +1,44 @@
+{% extends 'layout.twig' %}
+
+{% block body %}
+  <h1 class="text-center text-success">Ajout d'un vehicule</h1>
+
+      <div class="container">
+                  <form action="/addVehicule" methode="post">
+                        <div class="form-group">
+                              <label for="Proprietaire" class="mb-2">Nom du Proprietaire :</label>
+                              <input type="Proprietaire" class="form-control" id="Proprietaire" name="Proprietaire" placeholder="ex : Fernand">
+                        </div>
+                        <div class="form-group mt-4">
+                              <label for="image" class="mb-2">Image :</label>
+                              <input type="file" class="form-control" id="image" name="image" placeholder=".png .jpeg .jpg">
+                        </div>
+                        <div class="form-group mt-4">
+                              <label for="model" class="mb-2">Model :</label>
+                              <select name="model" id="model">
+                                    <option value="">Choisisez le types</option>
+                                    {% if models %}
+                                          {% for model in models %}
+                                                <option value="{{model.option}}">{{model.option}}</option>
+                                          {% endfor %}
+                                    {% endif %}
+                              </select>
+                        </div>
+                        <div class="form-group mt-4">
+                              <label for="anne" class="mb-2">Année :</label>
+                              <input type="text" class="form-control" id="anne" name="anne" placeholder="1999 ...">
+                        </div>
+                        <div class="form-group mt-4">
+                              <label for="description" class="mb-2">Description :</label>
+                              <textarea class="form-control" id="description" name="description" rows="4" placeholder="Decrivez ici votre voiture ainsi que les problèmes"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary mt-4">Valider</button>
+                        {% if success %}
+                              <div class="alert alert-succes">{{success}}</div>
+                        {% endif %}
+                         {% if error %}
+                              <div class="alert alert-danger">{{error}}</div>
+                        {% endif %}
+                  </form>
+      </div>
+{% endblock %}

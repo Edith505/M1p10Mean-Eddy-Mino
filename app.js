@@ -4,6 +4,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const mongoose = require('mongoose')
+const Model = require('./models/model')
+const bodyParser = require('body-parser')
 //const Vehicule = require('./models/vehiculModel')
 
 //connexion a mongoose
@@ -27,15 +29,31 @@ var vehicule = new Vehicule({
 vehicule.save()
 .then(()=>console.log("sauvegarde reussi"))
 .catch(()=>console.log("sauvegarde echoue"));
-  
-}*/
+ 
+}
+for (let index = 0; index < 5; index++) {
+  //creez un type
+ var model = new Model({
+    option:'Model '+index
+ })
+ //sauvegarder un type
+//model.save()
+ .then(()=>console.log("sauvegarde reussi"))
+ .catch(()=>console.log("sauvegarde echoue"));
+   
+ }*/ 
 
 
 //Importation des router
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
+
 var app = express();
+
+app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use(bodyParser.json());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
