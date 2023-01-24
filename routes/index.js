@@ -26,8 +26,8 @@ router.get('/homeDashboard', function(req, res, next) {
 });
 
 
-router.get('/SingIn', function(req, res, next) {
-  res.render('SingIn', { title: 'SingIn' })
+router.get('/Singup', function(req, res, next) {
+  res.render('Singup', { title: 'SingIn' })
 });
 
 router.get('/Login', function(req, res, next) {

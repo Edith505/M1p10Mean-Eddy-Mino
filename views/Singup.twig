@@ -1,0 +1,39 @@
+{% extends 'Authentification.twig' %}
+
+{% block body %}
+        <div class="login-dark">
+            <form method="post">
+                
+                <div class="illustration">
+                    <i class="icon ion-person-add"></i>
+                </div>
+
+                <div class="form-group">
+                    <input class="form-control" type="username" name="username" placeholder="Userame">
+                </div>
+
+                <div class="form-group">
+                    <input class="form-control" type="name" name="name" placeholder="Full Name">
+                </div>
+
+                <div class="form-group">
+                    <input class="form-control" type="email" name="email" placeholder="Email">
+                </div>
+
+                <div class="form-group">
+                    <input class="form-control" type="password" name="password" placeholder="Password">
+                </div>
+
+                <div class="form-group">
+                    <input class="form-control" type="password" name="cpassword" placeholder="Re-type your Password">
+                </div>
+
+                <div class="form-group sub">
+                    <button class="btn btn-primary btn-block" type="submit">Sign Up</button>
+                </div>
+                
+
+                <a href="#" class="forgot">You have an account ?</a>
+            </form>
+        </div>
+{% endblock %}
