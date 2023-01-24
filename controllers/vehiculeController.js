@@ -39,22 +39,10 @@ exports.addOn = (req, res)=>{
      })
      vehicule.save((err, vehicule)=>{
       if (err) {
-            Marque.find()
-            .then((marques)=>{
-                  res.render('addVehicule', {marques :marques, error:"Envoie echouée, veuillez verifier les champs"})
-            })
-            .catch(()=>{
-                  res.redirect('/')
-            }); 
+            req.flash('error', 'Veuillez verifier les informations')
+            return res.redirect('/addVehicule')
       }
-      else{
-            Marque.find()
-            .then((marques)=>{
-                  res.render('addVehicule', {marques :marques, success:"Votre Vehicule a été bien enregistrer"}) 
-            })
-            .catch(()=>{
-                  res.redirect('/')
-            });   
-      }
+      req.flash('success','Votre vehicule a été enregistrer')
+      return res.redirect('/addVehicule')
      })
 }

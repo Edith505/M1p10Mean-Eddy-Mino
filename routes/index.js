@@ -3,10 +3,11 @@ const multer = require('multer');
 const vehiculeController = require('../controllers/vehiculeController');
 const multerConfig = require('../middlewares/multerConfig');
 var router = express.Router();
+const vehiculeValidator = require('../middlewares/validators/vehiculeValidator');
 
 
 /* POST page. */
-router.post('/addVehicule',multerConfig, vehiculeController.addOn);
+router.post('/addVehicule',multerConfig, vehiculeValidator, vehiculeController.addOn);
 
 
 /* GET page. */

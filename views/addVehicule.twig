@@ -33,10 +33,32 @@
                               <textarea class="form-control" id="description" name="description" rows="4" placeholder="Decrivez ici votre voiture ainsi que les problèmes"></textarea>
                         </div>
                         <button type="submit" class="btn btn-dark mt-4">Valider</button>
+                        {% if errorFormVehicule %}
+                        <h6 class="text-danger mt-3">" Veuillez verifier les erreurs ci-dessous !!! "</h6>
+                        <ul>
+                              {% for error in errorFormVehicule %}                                    
+                                    {% if error.Proprietaire %}
+                                          <li class="text-danger"><i>{{ error.Proprietaire.message}}</i></li>
+                                    {% endif %}
+                                    {% if error.marque %}
+                                          <li class="text-danger"><i>{{ error.marque.message}}</i></li>
+                                    {% endif %}
+                                    {% if error.image %}
+                                          <li class="text-danger"><i>{{ error.image.message}}</i></li>
+                                    {% endif %}
+                                    {% if error.anne %}
+                                          <li class="text-danger"><i>{{ error.anne.message}}</i></li>
+                                    {% endif %}
+                                    {% if error.Proprietaire %}
+                                          <li class="text-danger"><i>{{ error.description.message}}</i></li>
+                                    {% endif %}                                    
+                              {% endfor %}
+                              </ul>
+                        {% endif %}
                         {% if success %}
                               <div class="alert alert-success mt-3" role="alert">{{success}}</div>
                         {% endif %}
-                         {% if error %}
+                        {% if error %}
                               <div class="alert alert-danger mt-3" role="alert">{{error}}</div>
                         {% endif %}
                   </form>

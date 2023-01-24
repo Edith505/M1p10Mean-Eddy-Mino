@@ -5,8 +5,11 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
+var session = require('express-session')
+var flash = require('connect-flash');
 //const Marque = require('./models/marque')
 
+var app = express();
 //connexion a mongoose
 mongoose.set("strictQuery", false);
 mongoose.connect('mongodb://127.0.0.1:27017/AuthentificationDb', {UseNewUrlParser: true, UseUnifiedTopology: true})
@@ -16,15 +19,24 @@ mongoose.connect('mongodb://127.0.0.1:27017/AuthentificationDb', {UseNewUrlParse
 //Importation des router
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-/*
-for (let index = 0; index < 8; index++) {
-  marque = new Marque({
-    option : 'marque '+index,
-  })
-  marque.save()
-}
-*/
-var app = express();
+
+//SESSION
+app.use(session({
+  secret: 'JIfrL0rUfrosTmIclWa',
+  resave: false,
+  saveUninitialized: false
+}))
+
+//FLASH
+app.use(flash());
+app.use((req,res,next)=>{
+  res.locals.error = req.flash('error')
+  res.locals.success = req.flash('success')
+  res.locals.errorFormVehicule = req.flash('errorFormVehicule')
+  next()
+})
+
+
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
