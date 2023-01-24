@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const vehiculeShema = new Schema({
+const vehiculeSchema = new Schema({
       Proprietaire:{
             type:String,
             required: true
@@ -10,7 +10,7 @@ const vehiculeShema = new Schema({
             type:String,
             required: true
       },
-      model: {
+      marque: {
             type:String,
             required: true
       },
@@ -28,4 +28,4 @@ const vehiculeShema = new Schema({
       }
 })
 
-module.exports = mongoose.model('Vehicule', vehiculeShema)
+module.exports = mongoose.model('Vehicule', vehiculeSchema)

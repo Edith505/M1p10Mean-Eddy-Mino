@@ -1,5 +1,5 @@
 const Vehicule = require('../models/vehiculModel')
-const Model = require('../models/model');
+const Marque = require('../models/marque');
 
 exports.liste = (req,res)=>{
        Vehicule.find()
@@ -22,9 +22,9 @@ exports.show = (req,res) =>{
 }
 
 exports.add = (req, res)=>{
-      Model.find()
-      .then((models)=>{
-            res.render('addVehicule', {models: models})
+      Marque.find()
+      .then((marques)=>{
+            res.render('addVehicule', {marques: marques})
           })
           .catch((err)=>{
             res.redirect('/');
@@ -34,23 +34,23 @@ exports.add = (req, res)=>{
 exports.addOn = (req, res)=>{
      var vehicule = new Vehicule({
             ...req.body,
-            image:req.file.filename,
+            image: `${req.protocol}://${req.get('host')}/images/vehiculesPicture/${req.file.filename}`,
             depot: Date.now()
      })
      vehicule.save((err, vehicule)=>{
       if (err) {
-            Model.find()
-            .then((models)=>{
-                  res.render('addVehicule', {models :models, error:"Envoie echouée, veuillez verifier les champs"})
+            Marque.find()
+            .then((marques)=>{
+                  res.render('addVehicule', {marques :marques, error:"Envoie echouée, veuillez verifier les champs"})
             })
             .catch(()=>{
                   res.redirect('/')
             }); 
       }
       else{
-            Model.find()
-            .then((models)=>{
-                  res.render('addVehicule', {models :models, success:"Votre Vehicule a été bien enregistrer"}) 
+            Marque.find()
+            .then((marques)=>{
+                  res.render('addVehicule', {marques :marques, success:"Votre Vehicule a été bien enregistrer"}) 
             })
             .catch(()=>{
                   res.redirect('/')

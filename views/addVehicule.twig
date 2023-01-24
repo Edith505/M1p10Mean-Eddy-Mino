@@ -4,7 +4,7 @@
   <h1 class="text-center text-success">Ajout d'un vehicule</h1>
 
       <div class="container">
-                  <form action="/addVehicule" method="post" enctype="multipart/form-data">
+                  <form action="" method="post" enctype="multipart/form-data">
                         <div class="form-group">
                               <label for="Proprietaire" class="mb-2">Nom du Proprietaire :</label>
                               <input type="Proprietaire" class="form-control" id="Proprietaire" name="Proprietaire" placeholder="ex : Fernand">
@@ -14,12 +14,12 @@
                               <input type="file" class="form-control" id="image" name="image" placeholder=".png .jpeg .jpg">
                         </div>
                         <div class="form-group mt-4">
-                              <label for="model" class="mb-2">Model :</label>
-                              <select name="model" id="model">
-                                    <option value="">Choisisez le types</option>
-                                    {% if models %}
-                                          {% for model in models %}
-                                                <option value="{{model.option}}">{{model.option}}</option>
+                              <label for="marque" class="mb-2">Marques :</label>
+                              <select name="marque" id="marque">
+                                    <option value="">Choisir la marque</option>
+                                    {% if marques %}
+                                          {% for marque in marques %}
+                                                <option value="{{marque.option}}">{{marque.option}}</option>
                                           {% endfor %}
                                     {% endif %}
                               </select>

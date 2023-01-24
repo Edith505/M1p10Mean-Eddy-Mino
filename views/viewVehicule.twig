@@ -4,11 +4,11 @@
             <div class="card mb-3 box-sha" style="max-width: 100rem;">
                   <div class="row no-gutters">
                         <div class="col-md-4">
-                              <img src="https://via.placeholder.com/150" class="card-img-top" alt="{{vehiule.Proprietaire}}">
+                              <img src="{{vehicule.image}}" class="card-img-top" alt="{{vehiule.Proprietaire}}">
                         </div>
                         <div class="col-md-8 text-black">
                               <div class="card-body">
-                                    <h5 class="card-header mb-4"><strong>Model Vehicule : </strong>{{vehicule.model}}</h5>
+                                    <h5 class="card-header mb-4"><strong>Marque Vehicule : </strong>{{vehicule.marque}}</h5>
                                     <p class="card-text"><strong>Proprietaire : </strong>{{vehicule.Proprietaire}}</p>
                                     <p class="card-text"><strong>Année vehicule : </strong>{{vehicule.anne}}</p>
                                     <p class="card-text"><strong>Date de dépôt : </strong><small class="text-muted">{{vehicule.depot | date("d/m/Y g:i:sA")}}</small></p>

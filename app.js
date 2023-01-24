@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
+//const Marque = require('./models/marque')
 
 //connexion a mongoose
 mongoose.set("strictQuery", false);
@@ -15,8 +16,14 @@ mongoose.connect('mongodb://127.0.0.1:27017/AuthentificationDb', {UseNewUrlParse
 //Importation des router
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-
-
+/*
+for (let index = 0; index < 8; index++) {
+  marque = new Marque({
+    option : 'marque '+index,
+  })
+  marque.save()
+}
+*/
 var app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
