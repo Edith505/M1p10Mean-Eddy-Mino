@@ -13,7 +13,7 @@ const vehiculeValidator = (req, res, next)=>{
     })
     v.check().then((matched) => {
         if (!matched) {
-            req.flash('errorFormVehicule', v.errors)
+            req.flash('errorForm', v.errors)
             return res.redirect('/addVehicule')
         }
         next()
