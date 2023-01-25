@@ -1,9 +1,12 @@
 const { Validator } = require('node-input-validator');
 
 const vehiculeValidator = (req, res, next)=>{
+    if(req.file){
+        req.body.image = req.file.filename
+    }
     const v = new Validator(req.body, {
         Proprietaire:'required',
-        image:'size:1mb,20mb',
+        image:'required',
         marque:'required',
         anne:'required' ,                                             
         description:'required'

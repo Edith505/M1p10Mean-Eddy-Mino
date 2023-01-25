@@ -33,10 +33,10 @@
                               <textarea class="form-control" id="description" name="description" rows="4" placeholder="Decrivez ici votre voiture ainsi que les problèmes"></textarea>
                         </div>
                         <button type="submit" class="btn btn-dark mt-4">Valider</button>
-                        {% if errorFormVehicule %}
+                        {% if errorForm %}
                         <h6 class="text-danger mt-3">" Veuillez verifier les erreurs ci-dessous !!! "</h6>
                         <ul>
-                              {% for error in errorFormVehicule %}                                    
+                              {% for error in errorForm %}                                    
                                     {% if error.Proprietaire %}
                                           <li class="text-danger"><i>{{ error.Proprietaire.message}}</i></li>
                                     {% endif %}

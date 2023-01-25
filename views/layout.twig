@@ -10,28 +10,25 @@
   </head>
   <body>
   <div class="container-fluid">
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="/">Ma G'art Age</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="/">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Sing In</a>
-          </li>
-           <li class="nav-item">
-            <a class="nav-link" href="#">Login</a>
-          </li>
-           <li class="nav-item">
-            <a class="nav-link" href="/addVehicule">addVehicule</a>
-          </li>
-        </ul>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container d-flex justify-content-between align-items-center">
+        <a class="navbar-brand" href="/">Ma G'art Age</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/addVehicule">addVehicule</a>
+              </li>
+            </ul>
+        </div>
+        <div class="float">
+          <a class="btn btn-primary m-1" href="/users/login">Login</a>
+          <a class="btn btn-success m-1" href="/users/signup">Sing Up</a>
+        </div>
       </div>
+    
     </nav>
     {% block body %}
     

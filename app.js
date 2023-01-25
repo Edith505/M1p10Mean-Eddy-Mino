@@ -7,7 +7,9 @@ const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 var session = require('express-session')
 var flash = require('connect-flash');
-//const Marque = require('./models/marque')
+var indexRouter = require('./routes/index');
+var usersRouter = require('./routes/users');
+
 
 var app = express();
 //connexion a mongoose
@@ -16,9 +18,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/AuthentificationDb', {UseNewUrlParse
 .then(()=>console.log("ConnectedSuccessful"))
 .catch(()=>console.log("Error in the Connection"));
 
-//Importation des router
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+
 
 //SESSION
 app.use(session({
@@ -32,7 +32,7 @@ app.use(flash());
 app.use((req,res,next)=>{
   res.locals.error = req.flash('error')
   res.locals.success = req.flash('success')
-  res.locals.errorFormVehicule = req.flash('errorFormVehicule')
+  res.locals.errorForm = req.flash('errorForm')
   next()
 })
 

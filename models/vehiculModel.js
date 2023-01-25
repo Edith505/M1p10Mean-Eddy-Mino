@@ -12,11 +12,14 @@ const vehiculeSchema = new Schema({
       },
       marque: {
             type:String,
-            required: true
+            required: true,
+            min: 4,
+            max: 4
       },
       anne:{
             type:String,
-            required: true
+            required: true,
+
       },                                                  
       description: {
             type:String,

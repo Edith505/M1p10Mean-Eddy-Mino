@@ -25,15 +25,6 @@ router.get('/homeDashboard', function(req, res, next) {
   res.render('homeDashboard', { title: 'Admin' })
 });
 
-
-router.get('/Singup', function(req, res, next) {
-  res.render('Singup', { title: 'SingIn' })
-});
-
-router.get('/Login', function(req, res, next) {
-  res.render('Login', { title: 'Login' });
-});
-
 router.get('/dashboard', function(req, res, next) {
   res.render('dashboard', { title: 'Dashboard' });
 });
