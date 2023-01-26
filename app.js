@@ -60,6 +60,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
+passport.use(User.createStrategy())
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

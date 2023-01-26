@@ -14,13 +14,13 @@ module.exports ={
                 req.flash('error', err.message)
                 return res.redirect('/users/signup')
             }
-            passport.authenticate('local')(req,res,(err, newUser)=>{
+            passport.authenticate('local',{failureRedirect: '/users/signup'})(req,res,(err, newUser)=>{
                 if(err){
                     req.flash('error', err.message)
                     return res.redirect('/users/signup')
                 }
                 req.flash('success', 'Bienvenu, vous êtes connecter')
-                return res.redirect('/')
+                return res.redirect('/homeDashboard')
             })
        })
     },
