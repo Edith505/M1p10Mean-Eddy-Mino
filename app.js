@@ -9,6 +9,8 @@ var session = require('express-session')
 var flash = require('connect-flash');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+const passport = require('passport')
+const User = require('./models/userModel');
 
 
 var app = express();
@@ -30,6 +32,9 @@ app.use(session({
 //FLASH
 app.use(flash());
 app.use((req,res,next)=>{
+  if(req.user){
+    res.locals.user = req.user;
+  }
   res.locals.error = req.flash('error')
   res.locals.success = req.flash('success')
   res.locals.errorForm = req.flash('errorForm')
@@ -51,6 +56,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(passport.initialize());
+app.use(passport.session());
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
