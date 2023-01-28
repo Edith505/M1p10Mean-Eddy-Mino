@@ -14,7 +14,7 @@
                               <div class="p-3 bg-secondary text-white" role="alert">{{error}}</div>
                         {% endif %}
                 <div class="form-group">
-                    <input class="form-control" type="username" name="username" id="username" placeholder="Userame">
+                    <input class="form-control" type="text" name="username" id="username" placeholder="Userame">
                     {% if errorForm %}
                         {% for error in errorForm %}                                    
                                 {% if error.username %}
@@ -25,7 +25,7 @@
                 </div>
 
                 <div class="form-group">
-                    <input class="form-control" type="fullname" name="fullname" id="fullname" placeholder="Full Name">
+                    <input class="form-control" type="text" name="fullname" id="fullname" placeholder="Full Name">
                     {% if errorForm %}
                         {% for error in errorForm %}                                    
                                 {% if error.username %}

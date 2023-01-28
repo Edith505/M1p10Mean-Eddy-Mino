@@ -4,8 +4,7 @@ const loginValidator = (req, res, next)=>{
 
     const v = new Validator(req.body, {
         username:'required',
-        password:'required'  
-                                     
+        password:'required'                              
     })
    v.check().then((matched) => {
         if (!matched) {

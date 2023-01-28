@@ -17,5 +17,5 @@ const userValidator = (req, res, next)=>{
         next()
     })
 }
-
+ 
 module.exports = userValidator;

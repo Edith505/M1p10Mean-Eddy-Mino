@@ -25,6 +25,23 @@ module.exports ={
        })
     },
     login: (req, res, next)=>{
-       
+       const user = new User({
+            username: req.body.username,
+            password : req.body.password
+       })
+       req.login(user,(err)=>{
+        if(err){
+            req.flash('error', err.message)
+            return res.redirect('/users/login')
+        }
+        passport.authenticate('local',{failureRedirect: '/users/login'})(req,res,(err, user)=>{
+            if(err){
+                req.flash('error', err.message)
+                return res.redirect('/users/login')
+            }
+            req.flash('success', 'Hi, ravi de vous revoir')
+            return res.redirect('/homeDashboard')
+        })
+       })
     }
 } 
