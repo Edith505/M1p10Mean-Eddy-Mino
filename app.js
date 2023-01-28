@@ -36,6 +36,7 @@ app.use((req,res,next)=>{
     res.locals.user = req.user;
   }
   res.locals.error = req.flash('error')
+  res.locals.warning = req.flash('warning')
   res.locals.success = req.flash('success')
   res.locals.errorForm = req.flash('errorForm')
   next()
