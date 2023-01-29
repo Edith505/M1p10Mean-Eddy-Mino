@@ -6,21 +6,22 @@ module.exports ={
     signup: (req, res, next)=>{
        const newUser = User({
             username: req.body.username,
-            fullname : req.body.fullname,
+            firstname : req.body.firstname,
+            lastname : req.body.lastname,
             email : req.body.email
        })
        User.register(newUser, req.body.password, (err, user)=>{
             if(err){
                 req.flash('error', err.message)
-                return res.redirect('/users/signup')
+                return res.redirect('/usersignup')
             }
-            passport.authenticate('local',{failureRedirect: '/users/signup'})(req,res,(err, newUser)=>{
+            passport.authenticate('local')(req,res,(err, newUser)=>{
                 if(err){
                     req.flash('error', err.message)
-                    return res.redirect('/users/signup')
+                    return res.redirect('/usersignup')
                 }
                 req.flash('success', 'Bienvenu, vous êtes connecter')
-                return res.redirect('/homeDashboard')
+                return res.redirect('/homePage')
             })
        })
     },
@@ -32,15 +33,15 @@ module.exports ={
        req.login(user,(err)=>{
         if(err){
             req.flash('error', err.message)
-            return res.redirect('/users/login')
+            return res.redirect('/userlogin')
         }
-        passport.authenticate('local',{failureRedirect: '/users/login'})(req,res,(err, user)=>{
+        passport.authenticate('local',{failureRedirect: '/userlogin', failureFlash : 'Verifier votre username ou votre mot de passe'})(req,res,(err, user)=>{
             if(err){
                 req.flash('error', err.message)
-                return res.redirect('/users/login')
+                return res.redirect('/userlogin')
             }
             req.flash('success', 'Hi, ravi de vous revoir')
-            return res.redirect('/homeDashboard')
+            return res.redirect('/homePage')
         })
        })
     }

@@ -1,0 +1,25 @@
+
+<header class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/homePage">Ma G'art Age</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/homePage">Home</a>
+                    </li>
+                </ul>
+            </div>
+            {% if user %}
+                <a class="btn btn-warning m-1" href="/addVehicule">Deposer un vehicule</a>
+                <a class="btn btn-light m-1" href="/logout">Deconnection</a>
+            {% else %}
+                <a class="btn btn-warning m-1" href="/userlogin">Login</a>
+                <a class="btn btn-light m-1" href="/usersignup">Sing Up</a>
+            {% endif %}
+        </div>
+    </nav>
+</header>

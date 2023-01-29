@@ -9,7 +9,7 @@ const loginValidator = (req, res, next)=>{
    v.check().then((matched) => {
         if (!matched) {
             req.flash('errorForm', v.errors)
-            return res.redirect('/users/login')
+            return res.redirect('/userlogin')
         }
         next()
     })

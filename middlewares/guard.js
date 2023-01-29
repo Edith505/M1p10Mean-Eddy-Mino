@@ -6,6 +6,6 @@ module.exports = function isAuthenticated (req, res, next) {
         return next();
     }
     // sinon redirige l'utilisateur à la page de connexion
-    res.redirect('/users/login');
+    res.redirect('/userlogin');
 }
 

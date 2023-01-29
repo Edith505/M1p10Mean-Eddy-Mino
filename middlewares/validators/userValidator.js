@@ -4,7 +4,8 @@ const userValidator = (req, res, next)=>{
 
     const v = new Validator(req.body, {
         username:'required',
-        fullname:'required',
+        firstname:'required',
+        lastname:'required',
         email:'required|email',
         password:'required',  
         cpassword:'required|same:password'                                          
@@ -12,7 +13,7 @@ const userValidator = (req, res, next)=>{
    v.check().then((matched) => {
         if (!matched) {
             req.flash('errorForm', v.errors)
-            return res.redirect('/users/signup')
+            return res.redirect('/usersignup')
         }
         next()
     })
