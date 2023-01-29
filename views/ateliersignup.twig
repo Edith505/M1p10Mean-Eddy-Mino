@@ -1,0 +1,77 @@
+{% extends 'Authentification.twig' %}
+
+{% block body %}
+        <div class="login-dark">
+            <form method="post">
+                <div class="illustration">
+                    <i class="icon ion-person-add"></i>
+                </div>
+                 {% if success %}
+                              <div class="p-3 bg-secondary text-white" role="alert">{{success}}</div>
+                        {% endif %}
+                        {% if error %}
+                              <div class="p-3 bg-secondary text-white" role="alert">{{error}}</div>
+                        {% endif %}
+                <div class="form-group">
+                    <input class="form-control" type="text" name="username" id="username" placeholder="Userame">
+                    {% if errorForm %}
+                        {% for error in errorForm %}                                    
+                                {% if error.username %}
+                                    <div class="text-muted"><i>{{ error.username.message}}</i></div>
+                                {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    <input class="form-control" type="text" name="fullname" id="fullname" placeholder="Full Name">
+                    {% if errorForm %}
+                        {% for error in errorForm %}                                    
+                                {% if error.fullname %}
+                                    <div class="text-muted"><i>{{ error.fullname.message}}</i></div>
+                                {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    <input class="form-control" type="email" name="email" id="email" placeholder="Email">
+                    {% if errorForm %}
+                        {% for error in errorForm %}                                    
+                                {% if error.email %}
+                                    <div class="text-muted"><i>{{ error.email.message}}</i></div>
+                                {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    <input class="form-control" type="password" name="password"  id="password" placeholder="Password">
+                    {% if errorForm %}
+                        {% for error in errorForm %}                                    
+                                {% if error.password %}
+                                    <div class="text-muted"><i>{{ error.password.message}}</i></div>
+                                {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            
+                <div class="form-group">
+                    <input class="form-control" type="password"  name="cpassword" id="password" placeholder="Re-type your Password">
+                    {% if errorForm %}
+                        {% for error in errorForm %}                                    
+                                {% if error.cpassword %}
+                                    <div class="text-muted"><i>{{ error.cpassword.message}}</i></div>
+                                {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+
+                <div class="form-group sub">
+                    <button class="btn btn-primary btn-block mb-3" type="submit">Sign Up</button>
+                    <a href="/users/login" class="forgot">You have an account ?</a>
+                </div>
+            </form>
+        </div>
+               
+{% endblock %}
