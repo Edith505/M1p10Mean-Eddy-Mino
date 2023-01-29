@@ -11,14 +11,28 @@
 </head>
   {% include "partials/menu.twig" %}
   <body>
-    {% if success %} <div class="alert alert-success">{{success}}</div>{% endif %}
-    {% if error %} <div class="alert alert-danger">{{error}}</div>{% endif %}
-    {% if warning %} <div class="alert alert-warning">{{warning}}</div>{% endif %}
-    <div class="container mt-3">
+  <div class="container mt-3">
+    {% if success %} <div class="alert alert-success" id="alert-success">{{success}}</div>{% endif %}
+    {% if error %} <div class="alert alert-danger" id="alert-danger">{{error}}</div>{% endif %}
+    {% if warning %} <div class="alert alert-warning" id="alert-warning">{{warning}}</div>{% endif %}
+    
       {% block body %}
       {% endblock %}
     </div>
 
     
+  <script>
+  window.addEventListener("load", (event)=>{
+    setTimeout(()=>{
+        if(document.getElementById("alert-success")){
+            document.getElementById("alert-success").style.display = "none"
+        }else if(document.getElementById("alert-danger")){
+            document.getElementById("alert-danger").style.display = "none"
+        }else if(document.getElementById("alert-warning")){
+            document.getElementById("alert-wargning").style.display = "none"
+        }
+    },3000)
+})
+  </script>
   </body>
 </html>

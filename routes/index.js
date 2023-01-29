@@ -8,6 +8,8 @@ const vehiculeValidator = require('../middlewares/validators/vehiculeValidator')
 const userController = require('../controllers/userController');
 const userValidator = require('../middlewares/validators/userValidator');
 const loginValidator = require('../middlewares/validators/loginValidator');
+const sendRestMail = require('../middlewares/services/emailService');
+const resetValidator = require('../middlewares/validators/resetvalidator');
 
 
 /* POST page. */
@@ -50,6 +52,13 @@ router.get('/userlogin', (req, res) =>{
 });
 router.post('/userlogin',loginValidator, userController.login);
 
+//reinisialisation mot de passe
+router.get('/forgot-password',(req, res)=>{
+  res.render('forgot-password')
+})
+
+router.post('/forgot-password', userController.resetPassword, sendRestMail)
+
 
  /**DECONNECTION */
  router.get('/logout', (req, res) => {
@@ -61,8 +70,11 @@ router.post('/userlogin',loginValidator, userController.login);
     res.redirect("/userlogin");
     });
 });
+router.get('/reset-password/:token', userController.resetPasswordForm)
 
+router.get('/reset-password/:token', userController.resetPasswordForm)
 
+router.post('/reset-password/:token', resetValidator, userController.postRestPassword)
 
 router.post('/usersignup',userValidator, userController.signup);
 

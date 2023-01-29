@@ -27,7 +27,7 @@
                     <input class="form-control" type="text" name="fullname" id="fullname" placeholder="Full Name">
                     {% if errorForm %}
                         {% for error in errorForm %}                                    
-                                {% if error.username %}
+                                {% if error.fullname %}
                                     <div class="text-muted"><i>{{ error.fullname.message}}</i></div>
                                 {% endif %}
                         {% endfor %}
@@ -38,7 +38,7 @@
                     <input class="form-control" type="email" name="email" id="email" placeholder="Email">
                     {% if errorForm %}
                         {% for error in errorForm %}                                    
-                                {% if error.username %}
+                                {% if error.email %}
                                     <div class="text-muted"><i>{{ error.email.message}}</i></div>
                                 {% endif %}
                         {% endfor %}
@@ -49,7 +49,7 @@
                     <input class="form-control" type="password" name="password"  id="password" placeholder="Password">
                     {% if errorForm %}
                         {% for error in errorForm %}                                    
-                                {% if error.username %}
+                                {% if error.password %}
                                     <div class="text-muted"><i>{{ error.password.message}}</i></div>
                                 {% endif %}
                         {% endfor %}
@@ -60,7 +60,7 @@
                     <input class="form-control" type="password"  name="cpassword" id="password" placeholder="Re-type your Password">
                     {% if errorForm %}
                         {% for error in errorForm %}                                    
-                                {% if error.username %}
+                                {% if error.cpassword %}
                                     <div class="text-muted"><i>{{ error.cpassword.message}}</i></div>
                                 {% endif %}
                         {% endfor %}

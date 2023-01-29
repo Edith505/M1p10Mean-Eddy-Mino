@@ -1,5 +1,7 @@
 const User = require('../models/userModel')
 const passport = require('passport');
+const randomToken = require('random-token');
+const Reset = require('../models/reset')
 
 
 module.exports ={
@@ -44,5 +46,85 @@ module.exports ={
             return res.redirect('/homePage')
         })
        })
+    },
+    resetPassword:(req, res, next)=>{
+        User.findOne({username : req.body.username},(err,user)=>{
+            if(err){
+                req.flash('error', err.message)
+                return res.redirect('/forgot-password')
+            }
+            if(!user){
+                req.flash('error', 'Username non trouver')
+                return res.redirect('/forgot-password')
+            }
+            //token
+            const token = randomToken(32)
+            const reset = new Reset({
+                username : req.body.username,
+                resetPasswordToken : token,
+                resetExpire : Date.now()+3600000
+            })
+            reset.save((err, reset)=>{
+                if(err){
+                    req.flash('error', err.message)
+                    return res.redirect('/forgot-password')
+                }
+                //email reset
+                req.body.email = user.email;
+                req.body.message = "Salut "+user.username+"cliquer sur ce lien pour reinisialiser votre mot de passe :           <br>"+req.protocol+"://"+req.get('host')+"/forgot-password"+token;
+                next()
+            })
+        })
+    },
+    resetPasswordForm:(req, res, next)=>{
+        const token = req.params.token;
+        Reset.find0ne({resetPasswordToken: token, resetExpire: {$gt: Date.now()}}, (err, reset)=>{
+            if(err){
+                req.flash('error', err.message)
+                return res.redirect('/forgot-password')
+            }
+            if(!reset){
+                req.flash('success', 'Reinisialiser votre mot de passe')
+                return res.redirect('/reset-password')
+            }
+        })
+    },
+    postRestPassword:(req, res, next)=>{
+        const token = req.params.token;
+        const password = req.body.password;
+        Reset.find0ne({resetPasswordToken: token, resetExpire: {$gt: Date.now()}}, (err, reset)=>{
+            if(err){
+                req.flash('error', err.message)
+                return res.redirect('/forgot-password')
+            }
+            if(!reset){
+                req.flash('success', 'Reinisialiser votre mot de passe')
+                return res.redirect('/reset-password')
+            }
+            User.findOne({username: reset.username},(err, user)=>{
+                if(err){
+                    req.flash('error', err.message)
+                    return res.redirect('/forgot-password')
+                }
+                if(!reset){
+                    req.flash('error', 'utilisateur non trouver')
+                    return res.redirect('/reset-password')
+                }
+                user.setPassword(password, (err)=>{
+                    req.flash('error', 'le mot de passe ne peut pas êtres changer')
+                    return res.redirect('/forgot-password')
+                })
+                user.save();
+                Reset.deleteMany({username: user.username}, (err, message)=>{
+                    if(err){
+                        console.log(err)
+                    }
+                    console.log(message)
+                })
+
+            })
+            req.flash('success', 'votre mot de passe a bien été mis a jour')
+            return res.redirect('/userlogin')
+        })
     }
 } 
