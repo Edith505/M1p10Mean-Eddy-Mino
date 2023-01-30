@@ -15,11 +15,8 @@ const resetValidator = require('../middlewares/validators/resetvalidator');
 /* POST page. */
 router.post('/addVehicule',multerConfig, vehiculeValidator, vehiculeController.addOn);
 
-
 /* GET page. */
-router.get('/listeVehicule', vehiculeController.liste);
 
-router.get('/vehicule/:id', vehiculeController.show);
 
 router.get('/addVehicule', vehiculeController.add);
 
@@ -31,13 +28,6 @@ router.get('/homePage',isAuthenticated, (req, res, next) =>{
   res.render('homePage', { title: 'Home' })
 });
 
-router.get('/homeDashboard',isAuthenticated,(req, res, next)=> {
-  res.render('homeDashboard', { title: 'Admin' })
-});
-
-router.get('/dashboard',isAuthenticated, (req, res, next)=> {
-  res.render('dashboard', { title: 'Dashboard' });
-});
 
 //route pour qu'un utilisateur puisse s'inscrire
 router.get('/usersignup', (req, res) => {

@@ -10,7 +10,8 @@ var flash = require('connect-flash');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 const passport = require('passport')
-const User = require('./models/userModel');
+const User = require('./models/userModel')
+const Admin = require('./models/adminModel')
 
 
 var app = express();
@@ -31,9 +32,13 @@ app.use(session({
 
 //FLASH
 app.use(flash());
+
 app.use((req,res,next)=>{
   if(req.user){
     res.locals.user = req.user;
+  }
+  if(req.admin){
+    res.locals.user = req.admin;
   }
   res.locals.error = req.flash('error')
   res.locals.warning = req.flash('warning')
@@ -62,6 +67,10 @@ app.use(passport.session());
 passport.use(User.createStrategy())
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
+
+passport.use(Admin.createStrategy())
+passport.serializeUser(Admin.serializeUser());
+passport.deserializeUser(Admin.deserializeUser());
 
 
 app.use('/', indexRouter);

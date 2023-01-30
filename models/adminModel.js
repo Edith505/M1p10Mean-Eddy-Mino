@@ -7,10 +7,6 @@ const adminSchema  = new Schema({
             type:String,
             required: true
       },
-      fullname: {
-            type:String,
-            required: true
-      },
       email: {
             type:String,
             required: true
@@ -22,5 +18,5 @@ const adminSchema  = new Schema({
       }
 })
 
-admin.plugin(passportLocalMongoose);
+adminSchema.plugin(passportLocalMongoose);
 module.exports = mongoose.model('Admin', adminSchema)
