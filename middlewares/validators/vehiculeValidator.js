@@ -2,6 +2,7 @@ const { Validator } = require('node-input-validator');
 
 
 
+//validation d'un ajout vehicule par le client
 const vehiculeValidator = (req, res, next)=>{
     if(req.file){
         req.body.image = req.file.filename

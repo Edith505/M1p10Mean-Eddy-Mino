@@ -3,7 +3,9 @@ const passport = require('passport');
 const randomToken = require('random-token');
 const Reset = require('../models/reset')
 
-
+/**
+ * Code controllant l'authentification et l'inscription d'un utilisateur'
+*/
 module.exports ={
     signup: (req, res, next)=>{
        const newUser = User({
@@ -57,7 +59,7 @@ module.exports ={
                 req.flash('error', 'Username non trouver')
                 return res.redirect('/forgot-password')
             }
-            //token
+            //token qui dure 1h après a mise en place
             const token = randomToken(32)
             const reset = new Reset({
                 username : req.body.username,
@@ -76,6 +78,10 @@ module.exports ={
             })
         })
     },
+
+    /**
+     * creation d'un token pour reinitialiser le mot de pase
+     */
     resetPasswordForm:(req, res, next)=>{
         const token = req.params.token;
         Reset.find0ne({resetPasswordToken: token, resetExpire: {$gt: Date.now()}}, (err, reset)=>{
@@ -89,6 +95,8 @@ module.exports ={
             }
         })
     },
+
+    /**verification d'un token s'il est encore valide */
     postRestPassword:(req, res, next)=>{
         const token = req.params.token;
         const password = req.body.password;

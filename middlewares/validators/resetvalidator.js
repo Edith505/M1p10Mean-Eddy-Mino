@@ -1,5 +1,7 @@
 const { Validator } = require('node-input-validator');
 
+
+//validation de la reinitialisation de mdp
 const resetValidator = (req, res, next)=>{
 
     const v = new Validator(req.body, {

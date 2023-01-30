@@ -1,6 +1,10 @@
 const Vehicule = require('../models/vehiculModel')
 const Marque = require('../models/marque');
 
+
+/**
+ * Code controllant la liste des vehicules
+*/
 exports.liste = (req,res)=>{
        Vehicule.find()
       .then((vehicules)=>{
@@ -31,6 +35,7 @@ exports.add = (req, res)=>{
           });
 }
 
+/**ajouter l'image du vehicule en local pour povoir l'afficher après */
 exports.addOn = (req, res)=>{
      var vehicule = new Vehicule({
             ...req.body,

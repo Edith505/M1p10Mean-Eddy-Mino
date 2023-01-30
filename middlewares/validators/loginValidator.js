@@ -1,5 +1,7 @@
 const { Validator } = require('node-input-validator');
 
+
+//validation de l'authentification 'un client
 const loginValidator = (req, res, next)=>{
 
     const v = new Validator(req.body, {

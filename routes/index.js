@@ -60,8 +60,10 @@ router.post('/forgot-password', userController.resetPassword, sendRestMail)
     res.redirect("/userlogin");
     });
 });
-router.get('/reset-password/:token', userController.resetPasswordForm)
 
+/**
+ * Route pour reset password
+*/
 router.get('/reset-password/:token', userController.resetPasswordForm)
 
 router.post('/reset-password/:token', resetValidator, userController.postRestPassword)

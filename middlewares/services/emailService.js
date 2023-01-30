@@ -1,5 +1,12 @@
 const nodemailer = require('nodemailer')
 
+
+/**
+ *Fonction d'envoie d'email.
+ Il est a noter d'utiliser un email valid sur 'user' et le password sur 'pass'
+ parfois le service de gmail n'autorise pas la connection brutal avec les identifiants.
+ Il faut donc activer dans gerer mon compte => securité => activer autoriser application tierces 
+ */
 const sendRestMail = (req, res, next)=>{
     let transporter = nodemailer.createTransport({
         service: 'gmail',
@@ -15,6 +22,7 @@ const sendRestMail = (req, res, next)=>{
         subject : 'Reset your password',
         html: message
     }
+              /*creation d'une fonction qui envoi le mail */
     transporter.sendMail(mailOptions, (err, infos)=>{
         if (err) {
           console.log(err);

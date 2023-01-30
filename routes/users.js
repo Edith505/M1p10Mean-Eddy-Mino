@@ -7,6 +7,9 @@ const adminloginvalidator = require('../middlewares/validators/adminloginvalidat
 
 
 
+/**
+ * route /users
+*/
 router.get('/listeVehicule', vehiculeController.liste);
 
 router.get('/vehicule/:id', vehiculeController.show);

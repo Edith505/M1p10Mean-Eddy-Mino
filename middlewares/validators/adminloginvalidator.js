@@ -1,5 +1,7 @@
 const { Validator } = require('node-input-validator');
 
+
+//validation de l'authentification de l'admin
 const adminloginvalidator = (req, res, next)=>{
 
     const v = new Validator(req.body, {
