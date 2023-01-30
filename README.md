@@ -1,6 +1,6 @@
 # APP GARAGE BACK-END
-Mise en place du back-end avec le generateur express et un templet twig
-creation des routes users et index
+# Mise en place du back-end avec le generateur express et un templet twig
+# creation des routes users et index
 installation mongoose
 # installation npm nodemon
         "bcrypt": "^5.1.0",
@@ -22,12 +22,12 @@ installation mongoose
         "passport-local-mongoose": "^7.1.2",
         "random-token": "^0.0.8",
         "twig": "~0.10.3"
-Mise en place des authentifications et inscription pour chaque utilisateur
-admin; atelier; client
-Mise en place du dashboard pour admin et atelier
-Ajout d'un vehicule a reparer pour un client
-Utiliser le module passport pour s'authentifier et s'inscrire
-Utiliser nodemailer pour envoyer un mail de reset password
-creation de chaque model d'utilisateur et enregistrement en base de données
+# Mise en place des authentifications et inscription pour chaque utilisateur
+#  admin; atelier; client
+# Mise en place du dashboard pour admin et atelier
+# Ajout d'un vehicule a reparer pour un client
+# Utiliser le module passport pour s'authentifier et s'inscrire
+# Utiliser nodemailer pour envoyer un mail de reset password
+# creation de chaque model d'utilisateur et enregistrement en base de données
 
 
