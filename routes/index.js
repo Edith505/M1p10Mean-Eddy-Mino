@@ -2,7 +2,6 @@ var express = require('express');
 const multer = require('multer');
 const vehiculeController = require('../controllers/vehiculeController');
 const multerConfig = require('../middlewares/multerConfig');
-const isAuthenticated = require('../middlewares/guard');
 var router = express.Router();
 const vehiculeValidator = require('../middlewares/validators/vehiculeValidator');
 const userController = require('../controllers/userController');
@@ -10,6 +9,7 @@ const userValidator = require('../middlewares/validators/userValidator');
 const loginValidator = require('../middlewares/validators/loginValidator');
 const sendRestMail = require('../middlewares/services/emailService');
 const resetValidator = require('../middlewares/validators/resetvalidator');
+
 
 
 /* POST page. */
@@ -24,7 +24,7 @@ router.get('/', (req, res, next) =>{
   res.render('index', { title: 'index' })
 });
 
-router.get('/homePage',isAuthenticated, (req, res, next) =>{
+router.get('/homePage', (req, res, next) =>{
   res.render('homePage', { title: 'Home' })
 });
 

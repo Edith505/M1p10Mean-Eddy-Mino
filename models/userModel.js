@@ -20,6 +20,7 @@ const userSchema  = new Schema({
             required: true
       },
       password:String,
+      vehicules: Array,
       createAt: {
             type:Date,
             default: Date.now()

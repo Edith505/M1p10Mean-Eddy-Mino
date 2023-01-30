@@ -1,4 +1,5 @@
 var createError = require('http-errors');
+const dotenv = require('dotenv').config();
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
@@ -18,7 +19,7 @@ const Atelier = require('./models/atelierModel')
 var app = express();
 //connexion a mongoose
 mongoose.set("strictQuery", false);
-mongoose.connect('mongodb://127.0.0.1:27017/AuthentificationDb', {UseNewUrlParser: true, UseUnifiedTopology: true})
+mongoose.connect(process.env.DATABASE, {UseNewUrlParser: true, UseUnifiedTopology: true})
 .then(()=>console.log("ConnectedSuccessful"))
 .catch(()=>console.log("Error in the Connection"));
 
@@ -26,7 +27,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/AuthentificationDb', {UseNewUrlParse
 
 //SESSION
 app.use(session({
-  secret: 'JIfrL0rUfrosTmIclWa',
+  secret: process.env.SECRET,
   resave: false,
   saveUninitialized: false
 }))

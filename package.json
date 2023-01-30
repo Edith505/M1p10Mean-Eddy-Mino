@@ -11,6 +11,7 @@
     "connect-flash": "^0.1.1",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
+    "dotenv": "^16.0.3",
     "express": "~4.16.1",
     "express-passport-logout": "^0.1.0",
     "express-session": "^1.17.3",
