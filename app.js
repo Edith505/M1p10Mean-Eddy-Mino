@@ -12,6 +12,7 @@ var usersRouter = require('./routes/users');
 const passport = require('passport')
 const User = require('./models/userModel')
 const Admin = require('./models/adminModel')
+const Atelier = require('./models/atelierModel')
 
 
 var app = express();
@@ -39,6 +40,9 @@ app.use((req,res,next)=>{
   }
   if(req.admin){
     res.locals.user = req.admin;
+  }
+  if(req.atelier){
+    res.locals.user = req.atelier;
   }
   res.locals.error = req.flash('error')
   res.locals.warning = req.flash('warning')
@@ -71,6 +75,10 @@ passport.deserializeUser(User.deserializeUser());
 passport.use(Admin.createStrategy())
 passport.serializeUser(Admin.serializeUser());
 passport.deserializeUser(Admin.deserializeUser());
+
+passport.use(Atelier.createStrategy())
+passport.serializeUser(Atelier.serializeUser());
+passport.deserializeUser(Atelier.deserializeUser());
 
 
 app.use('/', indexRouter);
